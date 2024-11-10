@@ -1,0 +1,51 @@
+class Solution {
+    public int search(int[] nums, int target) {
+
+        if (nums.length == 1) {
+            if (nums[0] == target) {
+                return 0;
+            } else {
+                return -1;
+            }
+        }
+
+        int kindex = nums.length;
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i + 1] < nums[i]) {
+                kindex = i + 1;
+                break;
+            }
+        }
+        if (target >= nums[0] && target <= nums[kindex - 1]) {
+            int low = 0;
+            int high = kindex - 1;
+            while (low <= high) {
+                int mid = (low + high) / 2;
+                if (nums[mid] == target) {
+                    return mid;
+
+                } else if (nums[mid] > target) {
+                    high = mid - 1;
+                } else {
+                    low = mid + 1;
+                }
+            }
+        } else {
+            int low = kindex;
+            int high = nums.length - 1;
+            while (low <= high) {
+                int mid = (low + high) / 2;
+                if (nums[mid] == target) {
+                    return mid;
+
+                } else if (nums[mid] > target) {
+                    high = mid - 1;
+                } else {
+                    low = mid + 1;
+                }
+            }
+        }
+        return -1;
+
+    }
+}
