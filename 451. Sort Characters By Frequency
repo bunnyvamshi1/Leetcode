@@ -1,0 +1,51 @@
+class Solution {
+    public String frequencySort(String s) {
+
+        HashMap<String,Integer> hmap=new HashMap<>();
+        for(int i=0;i<s.length();i++)
+        {
+            Integer c=hmap.get(s.charAt(i)+"");
+            if(c==null)
+            {
+                hmap.put(s.charAt(i)+"",1);
+            }
+            else
+            {
+                hmap.put(s.charAt(i)+"",++c);
+            }
+        }
+        List<String> keys = new ArrayList<>(hmap.keySet());
+        List<Integer> values = new ArrayList<>(hmap.values());
+        for(int i=0;i<values.size();i++)
+        {
+            for(int j=0;j<values.size()-1-i;j++)
+            {
+                if(values.get(j)>values.get(j+1))
+                {
+                    int temp=values.get(j);
+
+                    values.set(j,values.get(j+1));
+
+                    values.set(j+1,temp);
+
+                    String p=keys.get(j);
+
+                    keys.set(j,keys.get(j+1));
+
+                    keys.set(j+1,p);
+                }
+            }
+        }
+        String res="";
+        for(int i=values.size()-1;i>=0;i--)
+        {
+            String key=keys.get(i);
+            int value=values.get(i);
+            for(int j=1;j<=value;j++)
+            {
+                res=res+key;
+            }
+        }
+        return res;   
+    }
+}
