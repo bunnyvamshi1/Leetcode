@@ -1,0 +1,26 @@
+class Solution {
+    public ListNode middleNode(ListNode head) {
+
+       int count=0;
+       ListNode node=head;
+        while(node!=null)
+        {
+            count++;
+            node=node.next;
+        }
+        int count1=0;
+        ListNode result=new ListNode();
+        while(head!=null)
+        {
+            if(count/2==count1)
+            {
+                result=head;
+            }
+            count1++;
+            head=head.next;
+        }
+        return result;
+        
+        
+    }
+}
