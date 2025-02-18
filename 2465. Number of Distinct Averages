@@ -1,0 +1,18 @@
+class Solution {
+    public int distinctAverages(int[] nums) {
+
+        Arrays.sort(nums);
+        int start=0;
+        int end=nums.length-1;
+        Set<Double> l=new HashSet<>();
+        while(start<end)
+        {
+             double average=(nums[start]+nums[end])/2.0;
+             l.add(average);
+             start++;
+             end--;
+        }
+        return l.size();
+        
+    }
+}
