@@ -1,0 +1,47 @@
+class Solution {
+    public int[] closestPrimes(int left, int right) {
+
+        int[] res = new int[2];
+
+        List<Integer> l = new ArrayList<>();
+        for (int i = left; i <= right; i++) {
+            if (isPrime(i)) {
+                l.add(i);
+            }
+        }
+        if (l.size() < 2) {
+            res[0] = -1;
+            res[1] = -1;
+            return res;
+        }
+       
+        int length = l.get(1) - l.get(0);
+        res[0] = l.get(0);
+        res[1] = l.get(1);
+        for (int i = 1; i < l.size() - 1; i++) {
+            int diff = l.get(i + 1) - l.get(i);
+            if (diff < length) {
+                res[0] = l.get(i);
+                res[1] = l.get(i + 1);
+                length = diff;
+            }
+        }
+        return res;
+
+    }
+
+    private boolean isPrime(int n) {
+        if (n <= 1)
+            return false;
+        if (n <= 3)
+            return true;
+        if (n % 2 == 0 || n % 3 == 0)
+            return false;
+        for (int i = 5; i * i <= n; i += 6) {
+            if (n % i == 0 || n % (i + 2) == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
