@@ -1,0 +1,39 @@
+class Solution {
+    public boolean areAlmostEqual(String s1, String s2) {
+
+        int diff = 0;
+        char s1ch1 = ' ';
+        char s1ch2 = ' ';
+        char s2ch1 = ' ';
+        char s2ch2 = ' ';
+        for (int i = 0; i < s1.length(); i++) {
+            if (s1.charAt(i) != s2.charAt(i)) {
+                if (diff == 0) {
+                    s1ch1 = s1.charAt(i);
+                    s2ch1 = s2.charAt(i);
+                }
+                if (diff == 1) {
+                    s1ch2 = s1.charAt(i);
+                    s2ch2 = s2.charAt(i);
+                }
+                diff++;
+            }
+            if (diff > 2) {
+                return false;
+            }
+        }
+        if (diff == 1 || diff > 2) {
+            return false;
+        }
+        if (diff == 2) {
+            if ((s1ch1 == s2ch1 && s1ch2 != s2ch2) || (s1ch1 == s2ch2 && s1ch2 == s2ch1)) {
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+        return true;
+
+    }
+}
