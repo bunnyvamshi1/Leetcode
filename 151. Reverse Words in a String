@@ -1,0 +1,13 @@
+class Solution(object):
+    def reverseWords(self, s):
+        s=s.strip()
+        lst=list(map(str,s.split()))
+        res=""
+
+        for i in range(len(lst)-1,-1,-1):
+            if i!=0:
+                res=res+lst[i]+' '
+            else:
+                res=res+lst[i]
+
+        return res
