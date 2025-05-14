@@ -1,0 +1,44 @@
+class Solution(object):
+    def isValid(self, s):
+        
+        i=1
+        l=[]
+        l.append(s[0])
+        isvalid=True
+
+        while i<len(s):
+
+            if s[i] in ['(','{','[']:
+
+                l.append(s[i])
+
+            elif s[i] in [')','}',']']:
+
+                if not l:
+                    isvalid=False
+                    break
+
+                elif s[i]==')' and l[-1]=='(':
+                    l.pop()
+
+                elif s[i]=='}' and l[-1]=='{':
+                    l.pop()
+                elif s[i]==']' and l[-1]=='[':
+                    l.pop()
+                else:
+
+                    print("hiii")
+                     
+                    isvalid=False
+                    break
+
+            i+=1
+  
+        if isvalid and len(l)==0:
+            return True
+        else:
+            return False
+
+
+
+        
