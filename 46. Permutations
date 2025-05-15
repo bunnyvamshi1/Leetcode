@@ -1,0 +1,13 @@
+class Solution(object):
+    def permute(self, nums):
+        
+
+        from itertools import permutations
+        p=permutations(nums)
+        res=[]
+        for i in p:
+
+            res.append(list(i))
+            
+        return res
+        
