@@ -1,0 +1,21 @@
+class Solution(object):
+    def generate(self, numrows):
+
+
+        res=[]
+        for i in range(numrows):
+            if i==0:
+                l=[1]
+                res.append(l)
+            elif i==1:
+                l=[1,1]
+                res.append(l)
+            else:
+                l=[1]
+                for j in range(1,i):
+                    sum1=res[i-1][j-1]+res[i-1][j]
+                    l.append(sum1)      
+                l.append(1)
+                res.append(l)
+
+        return res
