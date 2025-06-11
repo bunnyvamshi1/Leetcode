@@ -1,0 +1,27 @@
+class Solution(object):
+    def matrixReshape(self, mat, r, c):
+
+        lst=[]
+        for i in range(len(mat)):
+            for j in range(len(mat[0])):
+                lst.append(mat[i][j])
+
+        print(lst)
+        rlength=len(mat)
+        clength=len(mat[0])
+        print(rlength)
+        print(clength)
+        if rlength*clength==r*c:
+
+            res=[]
+            p=0
+            for i in range(r):
+                l=[]
+                for j in range(c):
+                    l.append(lst[p])
+                    p=p+1
+                res.append(l)
+            
+            return res
+        else:
+            return mat
