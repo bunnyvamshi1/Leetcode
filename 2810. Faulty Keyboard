@@ -1,0 +1,18 @@
+class Solution(object):
+    def finalString(self, s):
+        
+        index=0
+        word=""
+        while(index<len(s)):
+
+            if s[index]=='i':
+
+                p=word[::-1]
+                word=p
+            else:
+                word=word+s[index]
+
+            index+=1
+        return word
+
+        
